@@ -1,0 +1,25 @@
+name: Cloudflare DNS Update
+
+on:
+  workflow_dispatch:  # يمكن تشغيله يدويًا من تبويب Actions
+
+jobs:
+  update-dns-records:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Python (if needed)
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Extract automation script
+        run: unzip braviq_dns_cloudflare_zoho.zip -d dns_script
+
+      - name: Run Cloudflare DNS updater
+        run: python dns_script/cloudflare_dns_updater_enhanced.py
+        env:
+          API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
