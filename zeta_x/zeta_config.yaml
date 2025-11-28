@@ -1,0 +1,31 @@
+zeta:
+  name: "ZETA-X Dominion Core"
+  version: "vΩ.Σ.1.0"
+  operator: "Emad Janah"
+  locale: "TR-AR-EN"
+
+logging:
+  level: "INFO"
+  file: "data/logs/zeta.log"
+
+database:
+  path: "data/db/zeta_db.json"
+
+modules:
+  enabled:
+    - recon
+    - ops
+    - leads
+    - fin
+    - vault
+
+defaults:
+  recon:
+    region: "libya"
+    depth: "standard"
+  ops:
+    mode: "simulation"
+  leads:
+    limit: 20
+  fin:
+    risk_model: "basic"
